@@ -1,11 +1,15 @@
 package org.pluralsight;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class Employee {
     private int employeeId;
     private String name;
     private String department;
     private double payRate;
     private double hoursWorked;
+    private boolean isClockedIn = false;
 
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
@@ -14,6 +18,24 @@ public class Employee {
         this.payRate = payRate;
         this.hoursWorked = hoursWorked;
     }
+
+    public void punchIn(double hours) {
+        isClockedIn = true;
+        LocalDateTime startTime = LocalDateTime.now();
+        System.out.println("Employee " + name + " clocked in at " + startTime);
+    }
+
+    public void punchOut(double hours) {
+        if (isClockedIn) {
+            isClockedIn = false;
+            LocalDateTime endTime = LocalDateTime.now();
+            this.hoursWorked += hours;
+            System.out.println("Employee " + name + " clocked out at " + endTime + ". Worked " + hours + " hours.");
+        } else {
+            System.out.println("Employee " + name + " is not currently clocked in.");
+        }
+    }
+
 
     // Derived getters
     public double getRegularHours() {
