@@ -2,6 +2,9 @@ package org.pluralsight;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        Employee employee1 = new Employee(1, "Hayat", "IT", 80, 50);
+
+        employee1.punchIn(9);
+        employee1.punchOut(18);
     }
 }

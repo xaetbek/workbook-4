@@ -18,7 +18,7 @@ class CalculatorTest {
         // assert
         assertEquals(expectedResult, actualFunctionResult);
     }
-    
+
     @Test
     void subtract_shouldReturnSubtractionOfTwoNumbers() {
         // arrange
