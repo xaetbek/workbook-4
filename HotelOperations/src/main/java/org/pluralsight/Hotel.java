@@ -23,9 +23,42 @@ public class Hotel {
         this.bookedBasicRooms = bookedBasicRooms;
     }
 
-    public boolean bookRoom(int numberOfRooms, boolean isSuite) {
+    public boolean bookRoom(int numberOfRoomsToBook, boolean isSuite) {
+        if (isSuite) {
+            if (numberOfRoomsToBook <= getAvailableSuites()) {
+                bookedSuites += numberOfRoomsToBook;
+                return true;
+            } else {
+                return false;
+            }
+        }
+        else {
+            if (numberOfRoomsToBook <= getAvailableRooms()) {
+                bookedBasicRooms += numberOfRoomsToBook;
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
-    public int getAvailableSuites(){}
-    public int getAvailableRooms(){}
+    public int getAvailableSuites(){
+        return numberOfSuites - bookedSuites;
+    }
+    public int getAvailableRooms(){
+        return numberOfRooms - bookedBasicRooms;
+    }
+
+    // Optional getters for testing/debugging
+    public String getName() {
+        return name;
+    }
+
+    public int getBookedSuites() {
+        return bookedSuites;
+    }
+
+    public int getBookedBasicRooms() {
+        return bookedBasicRooms;
+    }
 }
